@@ -34,3 +34,44 @@ button{cursor:pointer}
 @media(max-width:1100px){.brand-tagline{display:none}.main-nav{gap:14px}.data-grid{grid-template-columns:repeat(2,1fr)}.stat-card{padding:5px 14px}.hero-note{right:3%}}
 @media(max-width:820px){.nav-wrap{padding:0 18px}.brand-divider{display:none}.menu-toggle{display:block;margin-left:auto}.main-nav{position:absolute;top:68px;left:0;right:0;background:var(--cream);display:none;flex-direction:column;align-items:stretch;gap:0;border-bottom:1px solid var(--line);padding:8px 18px}.main-nav.open{display:flex}.nav-link{padding:11px 8px;border-bottom:0}.icon-btn{font-size:22px}.hero{min-height:610px;align-items:flex-end}.hero:after{background:linear-gradient(180deg,rgba(246,235,246,.2) 0%,rgba(246,235,246,.7) 43%,rgba(246,235,246,.98) 65%)}.hero-content{padding:80px 22px 45px}.hero h1{font-size:44px}.hero-art img{object-position:62% center}.hero-note{top:30px;right:18px;font-size:20px}.stats-strip{grid-template-columns:1fr 1fr;padding:20px 12px}.stat-card{border-right:0;border-bottom:1px solid var(--line);padding:14px}.stat-card:nth-child(3),.stat-card:nth-child(4){border-bottom:0}.section{padding:70px 20px}.section-grid{grid-template-columns:1fr;gap:30px}.principles{grid-template-columns:1fr 1fr}.form-grid,.law-grid{grid-template-columns:1fr 1fr}.accordion-grid{grid-template-columns:1fr}.tab-panel{grid-template-columns:1fr;gap:20px}.quiz-wrap{grid-template-columns:1fr;padding:30px 20px;gap:25px}.resource-grid{grid-template-columns:1fr}.support-box{display:block}.support-steps{margin-top:18px}.footer-main{display:block}.footer-links{margin-top:25px}}
 @media(max-width:520px){.brand{font-size:21px}.icon-btn{display:none}.hero{min-height:600px}.hero h1{font-size:39px}.hero-copy{font-size:13px}.hero-actions{align-items:flex-start;flex-direction:column;gap:12px}.stats-strip{grid-template-columns:1fr}.stat-card{border-bottom:1px solid var(--line)!important}.stat-card:last-child{border-bottom:0!important}.form-grid,.law-grid,.data-grid{grid-template-columns:1fr}.split-heading{display:block}.outline-btn{display:inline-block;margin-top:15px}.data-card p{min-height:auto}.tab-panels{padding:25px 18px}.answer-grid{grid-template-columns:1fr}.quiz-card{padding:25px 20px}.quiz-card h3{font-size:23px}.footer-links{grid-template-columns:1fr 1fr}}
+
+/* ===== Revisions: readability, accessibility, new features ===== */
+:focus-visible{outline:3px solid var(--purple2);outline-offset:3px;border-radius:6px}
+.scroll-progress{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--purple),var(--purple2));transition:width .1s}
+.hero-art{background:linear-gradient(135deg,#d9c0e8,#f1dfe9)}
+.image-card{min-height:260px}
+body{font-size:16px}
+.nav-link{font-size:13px}.nav-wrap{gap:14px}.main-nav{gap:18px}
+.stat-card span{font-size:13px}.stat-card small{font-size:12px}
+.principles b{font-size:14px}.principles small{font-size:13px}
+.section-copy p,.section-heading>p{font-size:16px}
+.info-card small{font-size:14px}
+.accordion-btn{font-size:15px}.accordion-btn span{font-size:12px}.accordion-content,.faq-item>div{font-size:15px}.faq-item button{font-size:16px}
+.tab{font-size:14px}.tab-panel p{font-size:15px}.tab-panel li{font-size:14px}
+.data-top{font-size:11px}.data-card p{font-size:14px;min-height:0}.data-card a,.source-note{font-size:13px}
+.law-card p{font-size:14px}.law-meta{font-size:12px}
+.quiz-intro>p{font-size:15px}.quiz-progress{font-size:13px}.answer-btn{font-size:14px}.quiz-feedback{font-size:14px}.next-btn{font-size:14px}.quiz-label{font-size:12px}
+.resource-card p{font-size:14px}.resource-card a{font-size:13px}.support-box p{font-size:14px}.support-steps span{font-size:12px}
+.reference-list b{font-size:15px}.reference-list small{font-size:13px}.reference-list a>span{font-size:12px}
+.footer-links,.site-footer p{font-size:13px}.footer-bottom{font-size:12px}
+.modal-card p{font-size:15px}.modal-tip{font-size:14px}
+.search-results{font-size:14px}.outline-btn{font-size:13px;background:transparent;cursor:pointer}
+.cite{color:var(--purple);font-size:.78em;font-weight:700;vertical-align:super;margin-left:2px}.cite:hover{text-decoration:underline}
+.reference-list a:target{background:rgba(202,168,223,.18)}
+.inclusion-note{border-left:4px solid var(--purple2);background:var(--lav);padding:12px 16px;border-radius:0 12px 12px 0;font-size:14px!important}
+.answer-btn:disabled{cursor:default;opacity:.6}.answer-btn.selected:disabled{opacity:1}
+.quiz-result{text-align:center;padding:10px 0}.quiz-result strong{display:block;font:700 56px "Playfair Display",Georgia,serif;color:var(--purple)}.quiz-result p{color:var(--muted)}
+.pledge-wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.pledge-form,.pledge-card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:var(--shadow)}
+.pledge-form>label{font-weight:700;font-size:14px}.pledge-form input[type=text],.pledge-form #pledgeName{display:block;width:100%;margin:8px 0 20px;border:1px solid var(--line);background:var(--cream);color:var(--ink);border-radius:12px;padding:12px 14px}
+.pledge-form fieldset{border:0;padding:0;margin:0 0 22px}.pledge-form legend{font:700 20px "Playfair Display",Georgia,serif;margin-bottom:10px}
+.check{display:flex;gap:12px;align-items:flex-start;padding:11px 0;font-size:15px;cursor:pointer}.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--purple);flex:none}
+.pledge-card{background:linear-gradient(135deg,#70429a,#2c2047);color:#fff;min-height:300px}
+.pledge-card h3{font:italic 700 32px/1.15 "Playfair Display",Georgia,serif;margin:8px 0 16px}.pledge-kicker{font-size:12px;letter-spacing:.1em;font-weight:800;color:#e5cff2}
+.pledge-card ul{list-style:none;padding:0;margin:0 0 22px;display:grid;gap:10px}.pledge-card li{font-size:15px}.pledge-card li:before{content:"✓";margin-right:10px;color:#e5cff2;font-weight:800}
+.pledge-empty{color:#e5cff2;font-size:15px}.pledge-actions{display:flex;gap:10px;flex-wrap:wrap}.pledge-card .outline-btn{color:#fff;border-color:#e5cff2}
+@media(max-width:1100px){.nav-link{font-size:12px}.main-nav{gap:11px}}
+@media(max-width:820px){.pledge-wrap{grid-template-columns:1fr}.hero-copy{font-size:15px}}
+@media(max-width:520px){.icon-btn{display:block}.nav-wrap{padding:0 14px;gap:4px}.brand{font-size:20px}.pledge-form,.pledge-card{padding:22px 18px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation:none!important}}
+@media print{.site-header,.back-top,.modal{display:none}.reveal{opacity:1;transform:none}}

@@ -27,9 +27,10 @@
         <a href="#home" class="nav-link active">Home</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#statistics" class="nav-link">Statistics</a>
-        <a href="#laws" class="nav-link">Philippine Laws</a>
+        <a href="#laws" class="nav-link">Laws</a>
         <a href="#safety" class="nav-link">Safety Tips</a>
         <a href="#quiz" class="nav-link">Quiz</a>
+        <a href="#pledge" class="nav-link">Take Action</a>
         <a href="#resources" class="nav-link">Resources</a>
         <a href="#references" class="nav-link">References</a>
       </nav>
@@ -44,12 +45,13 @@
       </div>
       <div id="searchResults" class="search-results" aria-live="polite"></div>
     </div>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   </header>
 
   <main id="main">
     <section class="hero section-anchor" id="home">
       <div class="hero-art" aria-hidden="true">
-        <img src="assets/women_standing_together.jpg" alt="">
+        <img src="assets/women_standing_together.jpg" alt="" onerror="this.remove()">
       </div>
       <div class="hero-content reveal">
         <p class="eyebrow">GENDER-BASED VIOLENCE AND WOMEN'S SAFETY</p>
@@ -66,33 +68,34 @@
     <section class="stats-strip" aria-label="Key facts">
       <article class="stat-card reveal">
         <div class="stat-icon">◉</div>
-        <div><strong>15.4%</strong><span>of women aged 15–49 who ever had a husband or intimate partner reported physical, sexual, or emotional violence in 2025.</span><small>PSA, 2025 NDHS</small></div>
+        <div><strong>15.4%</strong><span>of women aged 15–49 who ever had a husband or intimate partner reported physical, sexual, or emotional violence in 2025.</span><small>PSA, 2025 NDHS <a class="cite" href="#ref-1">[1]</a></small></div>
       </article>
       <article class="stat-card reveal">
         <div class="stat-icon">⌁</div>
-        <div><strong>11,585</strong><span>VAW-related cases were recorded by the PNP in 2023 across several VAW-related laws.</span><small>PCW / PNP, 2023</small></div>
+        <div><strong>11,585</strong><span>VAW-related cases were recorded by the PNP in 2023 across several VAW-related laws.</span><small>PCW / PNP, 2023 <a class="cite" href="#ref-2">[2]</a></small></div>
       </article>
       <article class="stat-card reveal">
         <div class="stat-icon">▣</div>
-        <div><strong>5.3%</strong><span>of women aged 15–49 who ever had a husband or intimate partner reported physical violence in 2025.</span><small>PSA, 2025 NDHS</small></div>
+        <div><strong>5.3%</strong><span>of women aged 15–49 who ever had a husband or intimate partner reported physical violence in 2025.</span><small>PSA, 2025 NDHS <a class="cite" href="#ref-1">[1]</a></small></div>
       </article>
       <article class="stat-card reveal">
         <div class="stat-icon">◌</div>
-        <div><strong>911</strong><span>is the Philippines' nationwide emergency hotline for urgent situations.</span><small>Government of the Philippines</small></div>
+        <div><strong>911</strong><span>is the Philippines' nationwide emergency hotline for urgent situations.</span><small>Government of the Philippines <a class="cite" href="#ref-6">[6]</a></small></div>
       </article>
     </section>
 
     <section class="section about section-anchor" id="about">
       <div class="section-grid">
         <div class="image-card reveal">
-          <img src="assets/women_rally.jpg" alt="Illustration of people holding an awareness sign against gender-based violence">
+          <img src="assets/women_rally.jpg" alt="Illustration of people holding an awareness sign against gender-based violence" onerror="this.style.display='none'">
           <span class="image-label">Awareness starts with understanding.</span>
         </div>
         <div class="section-copy reveal">
           <p class="eyebrow">WHY THIS MATTERS</p>
           <h2>Safety builds <em>stronger communities.</em></h2>
           <p>Gender-based violence refers to harmful acts directed at a person because of gender, sex, gender identity, or gender roles. Women and girls experience many forms of violence, while people of different genders also face gender-related harm.</p>
-          <p>Learning about the issue helps students and communities recognize warning signs, respect boundaries, support survivors, and understand available protections.</p>
+          <p>Learning about the issue helps students and communities recognize warning signs, respect boundaries, support survivors, and understand available protections such as RA 9262 <a class="cite" href="#ref-3">[3]</a>, RA 7877 <a class="cite" href="#ref-4">[4]</a>, and RA 11313 <a class="cite" href="#ref-5">[5]</a>.</p>
+          <p class="inclusion-note"><b>Inclusion note:</b> Most national survey data focuses on women, but gender-based harm can affect people of any gender, including LGBTQ+ people. The Safe Spaces Act <a class="cite" href="#ref-5">[5]</a> protects people regardless of gender.</p>
           <div class="principles">
             <div><span>♙</span><b>Empowerment</b><small>Support people in making informed choices.</small></div>
             <div><span>◇</span><b>Equality</b><small>Promote equal rights and opportunities.</small></div>
@@ -181,7 +184,7 @@
             <ul><li>Know your school's reporting process.</li><li>Tell a trusted teacher, counselor, or administrator.</li><li>Keep evidence when doing so is safe.</li></ul>
           </article>
           <article class="tab-panel" id="work-safety">
-            <div><span class="big-icon">▥</span><h3>At work</h3><p>Workplace sexual harassment is addressed by Philippine law. Follow your organization's reporting process and seek support when needed.</p></div>
+            <div><span class="big-icon">▥</span><h3>At work</h3><p>Workplace sexual harassment is addressed by Philippine law <a class="cite" href="#ref-4">[4]</a><a class="cite" href="#ref-5">[5]</a>. Follow your organization's reporting process and seek support when needed.</p></div>
             <ul><li>Document relevant incidents and communications.</li><li>Use your workplace's reporting channels.</li><li>Seek appropriate assistance if you feel unsafe.</li></ul>
           </article>
           <article class="tab-panel" id="online-safety">
@@ -252,6 +255,21 @@
           <p>Addresses gender-based sexual harassment in streets, public spaces, online, workplaces, and educational or training institutions.</p>
           <div class="law-meta"><span>2019</span><a href="https://www.lawphil.net/statutes/repacts/ra2019/ra_11313_2019.html" target="_blank" rel="noopener">Official text ↗</a></div>
         </article>
+        <article class="law-card reveal">
+          <span class="law-number">RA 9710</span><h3>Magna Carta of Women</h3>
+          <p>Recognizes, protects, and promotes the rights of Filipino women, including protection from violence. <a class="cite" href="#ref-7">[7]</a></p>
+          <div class="law-meta"><span>2009</span><a href="https://lawphil.net/statutes/repacts/ra2009/ra_9710_2009.html" target="_blank" rel="noopener">Official text ↗</a></div>
+        </article>
+        <article class="law-card reveal">
+          <span class="law-number">RA 8353</span><h3>Anti-Rape Law of 1997</h3>
+          <p>Reclassified rape as a crime against persons and defines rape and its penalties. <a class="cite" href="#ref-8">[8]</a></p>
+          <div class="law-meta"><span>1997</span><a href="https://lawphil.net/statutes/repacts/ra1997/ra_8353_1997.html" target="_blank" rel="noopener">Official text ↗</a></div>
+        </article>
+        <article class="law-card reveal">
+          <span class="law-number">RA 9995</span><h3>Anti-Photo and Video Voyeurism Act</h3>
+          <p>Penalizes recording or sharing intimate images or videos without consent, including online. <a class="cite" href="#ref-9">[9]</a></p>
+          <div class="law-meta"><span>2009</span><a href="https://lawphil.net/statutes/repacts/ra2009/ra_9995_2009.html" target="_blank" rel="noopener">Official text ↗</a></div>
+        </article>
       </div>
     </section>
 
@@ -272,7 +290,21 @@
           </div>
           <div class="quiz-feedback" id="quizFeedback"></div>
           <button class="next-btn" id="nextQuestion" hidden>Next question →</button>
+          <div class="quiz-result" id="quizResult" hidden></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section section-anchor" id="pledge">
+      <div class="section-heading reveal"><p class="eyebrow">TAKE ACTION</p><h2>Make your <em>pledge.</em></h2><p>Awareness becomes social responsibility when it turns into action. Choose your commitments, add your name, and create a pledge card to save or share.</p></div>
+      <div class="pledge-wrap reveal">
+        <div class="pledge-form">
+          <label for="pledgeName">Your name or nickname</label>
+          <input id="pledgeName" maxlength="30" placeholder="e.g. Maria" autocomplete="off">
+          <fieldset><legend>I pledge to…</legend><label class="check"><input type="checkbox" value="Respect consent and personal boundaries"><span>Respect consent and personal boundaries</span></label><label class="check"><input type="checkbox" value="Never blame survivors for the harm done to them"><span>Never blame survivors for the harm done to them</span></label><label class="check"><input type="checkbox" value="Speak up or ask for help when I see harassment"><span>Speak up or ask for help when I see harassment</span></label><label class="check"><input type="checkbox" value="Be respectful and safe in my online conversations"><span>Be respectful and safe in my online conversations</span></label><label class="check"><input type="checkbox" value="Share verified information and help friends find support"><span>Share verified information and help friends find support</span></label></fieldset>
+          <button class="btn btn-primary" id="pledgeMake" type="button">Create pledge card</button>
+        </div>
+        <div class="pledge-card" id="pledgeCard" aria-live="polite"><p class="pledge-empty">Your pledge card will appear here. Your name stays in your browser and is not sent anywhere.</p></div>
       </div>
     </section>
 
@@ -301,7 +333,7 @@
         <div class="faq-item reveal"><button>What are common forms of gender-based violence?<b>+</b></button><div><p>Examples include physical violence, sexual violence, psychological abuse, economic abuse, stalking, harassment, and gender-based online sexual harassment.</p></div></div>
         <div class="faq-item reveal"><button>Is online harassment considered gender-related harm?<b>+</b></button><div><p>Some online conduct falls within gender-based online sexual harassment under the Safe Spaces Act. The law includes unwanted sexual remarks, threats, sharing images without consent, cyberstalking, and related conduct covered by the Act.</p></div></div>
         <div class="faq-item reveal"><button>What should I do if someone I know is experiencing abuse?<b>+</b></button><div><p>Listen without blaming, ask what support they want, help them identify trusted people or services, and contact emergency services if there is immediate danger.</p></div></div>
-        <div class="faq-item reveal"><button>Where can victims seek help in the Philippines?<b>+</b></button><div><p>Depending on the situation, options include 911 for emergencies, a Barangay VAW Desk, local social welfare offices, PNP Women and Children Protection units, and other verified government support channels.</p></div></div>
+        <div class="faq-item reveal"><button>Where can victims seek help in the Philippines?<b>+</b></button><div><p>Depending on the situation, options include 911 for emergencies, a Barangay VAW Desk, local social welfare offices, PNP Women and Children Protection units, and other verified government support channels. Protection orders are provided under RA 9262 <a class="cite" href="#ref-3">[3]</a>.</p></div></div>
         <div class="faq-item reveal"><button>Why is gender equality important for women's safety?<b>+</b></button><div><p>Equality supports equal rights, opportunities, participation, and respect. These conditions help create environments where people are better able to exercise their rights and seek support.</p></div></div>
       </div>
     </section>
@@ -309,12 +341,15 @@
     <section class="section references-section section-anchor" id="references">
       <div class="section-heading reveal"><p class="eyebrow">REFERENCES</p><h2>Sources used for this project</h2><p>External sources are linked so readers can verify statistics, laws, and support information.</p></div>
       <div class="reference-list reveal">
-        <a href="https://psa.gov.ph/statistics/national-demographic-health-survey/node/1684083157" target="_blank" rel="noopener"><span>01</span><div><b>Philippine Statistics Authority</b><small>Results from the 2025 National Demographic and Health Survey, including spousal violence indicators.</small></div><i>↗</i></a>
-        <a href="https://pcw.gov.ph/2024-18-day-campaign-to-end-violence-against-women/" target="_blank" rel="noopener"><span>02</span><div><b>Philippine Commission on Women</b><small>2024 Campaign to End Violence Against Women and PNP-reported VAW-related case data.</small></div><i>↗</i></a>
-        <a href="https://lawphil.net/statutes/repacts/ra2004/ra_9262_2004.html" target="_blank" rel="noopener"><span>03</span><div><b>Lawphil, Republic Act No. 9262</b><small>Anti-Violence Against Women and Their Children Act of 2004.</small></div><i>↗</i></a>
-        <a href="https://lawphil.net/statutes/repacts/ra1995/ra_7877_1995.html" target="_blank" rel="noopener"><span>04</span><div><b>Lawphil, Republic Act No. 7877</b><small>Anti-Sexual Harassment Act of 1995.</small></div><i>↗</i></a>
-        <a href="https://www.lawphil.net/statutes/repacts/ra2019/ra_11313_2019.html" target="_blank" rel="noopener"><span>05</span><div><b>Lawphil, Republic Act No. 11313</b><small>Safe Spaces Act.</small></div><i>↗</i></a>
-        <a href="https://ehotlines.e.gov.ph/" target="_blank" rel="noopener"><span>06</span><div><b>Government of the Philippines, Emergency Hotlines</b><small>Verified government directory for emergency and public-service contacts.</small></div><i>↗</i></a>
+        <a id="ref-1" href="https://psa.gov.ph/statistics/national-demographic-health-survey/node/1684083157" target="_blank" rel="noopener"><span>01</span><div><b>Philippine Statistics Authority</b><small>Results from the 2025 National Demographic and Health Survey, including spousal violence indicators.</small></div><i>↗</i></a>
+        <a id="ref-2" href="https://pcw.gov.ph/2024-18-day-campaign-to-end-violence-against-women/" target="_blank" rel="noopener"><span>02</span><div><b>Philippine Commission on Women</b><small>2024 Campaign to End Violence Against Women and PNP-reported VAW-related case data.</small></div><i>↗</i></a>
+        <a id="ref-3" href="https://lawphil.net/statutes/repacts/ra2004/ra_9262_2004.html" target="_blank" rel="noopener"><span>03</span><div><b>Lawphil, Republic Act No. 9262</b><small>Anti-Violence Against Women and Their Children Act of 2004.</small></div><i>↗</i></a>
+        <a id="ref-4" href="https://lawphil.net/statutes/repacts/ra1995/ra_7877_1995.html" target="_blank" rel="noopener"><span>04</span><div><b>Lawphil, Republic Act No. 7877</b><small>Anti-Sexual Harassment Act of 1995.</small></div><i>↗</i></a>
+        <a id="ref-5" href="https://www.lawphil.net/statutes/repacts/ra2019/ra_11313_2019.html" target="_blank" rel="noopener"><span>05</span><div><b>Lawphil, Republic Act No. 11313</b><small>Safe Spaces Act.</small></div><i>↗</i></a>
+        <a id="ref-6" href="https://ehotlines.e.gov.ph/" target="_blank" rel="noopener"><span>06</span><div><b>Government of the Philippines, Emergency Hotlines</b><small>Verified government directory for emergency and public-service contacts.</small></div><i>↗</i></a>
+        <a id="ref-7" href="https://lawphil.net/statutes/repacts/ra2009/ra_9710_2009.html" target="_blank" rel="noopener"><span>07</span><div><b>Lawphil, Republic Act No. 9710</b><small>Magna Carta of Women.</small></div><i>↗</i></a>
+        <a id="ref-8" href="https://lawphil.net/statutes/repacts/ra1997/ra_8353_1997.html" target="_blank" rel="noopener"><span>08</span><div><b>Lawphil, Republic Act No. 8353</b><small>Anti-Rape Law of 1997.</small></div><i>↗</i></a>
+        <a id="ref-9" href="https://lawphil.net/statutes/repacts/ra2009/ra_9995_2009.html" target="_blank" rel="noopener"><span>09</span><div><b>Lawphil, Republic Act No. 9995</b><small>Anti-Photo and Video Voyeurism Act of 2009.</small></div><i>↗</i></a>
       </div>
     </section>
   </main>
@@ -323,7 +358,7 @@
     <div class="footer-main">
       <div><a class="brand footer-brand" href="#home"><span class="brand-mark">◒</span><span>SafeSpace PH</span></a><p>Gender-Based Violence and Women's Safety</p></div>
       <div class="footer-links">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#statistics">Statistics</a><a href="#laws">Philippine Laws</a><a href="#safety">Safety Tips</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a><a href="#references">References</a>
+        <a href="#home">Home</a><a href="#about">About</a><a href="#statistics">Statistics</a><a href="#laws">Philippine Laws</a><a href="#safety">Safety Tips</a><a href="#resources">Resources</a><a href="#quiz">Quiz</a><a href="#pledge">Take Action</a><a href="#references">References</a>
       </div>
     </div>
     <div class="footer-bottom"><span>Educational project for Gender and Society.</span><span>SafeSpace PH · 2026</span></div>

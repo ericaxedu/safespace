@@ -95,10 +95,13 @@ $$('.info-card').forEach(card => {
     modalTip.textContent = data.tip;
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
+    lastFocus = document.activeElement; $('#modalClose')?.focus();
   });
 });
 
+let lastFocus;
 function closeModal(){
+  lastFocus?.focus();
   modal.classList.remove('open');
   modal.setAttribute('aria-hidden', 'true');
 }
@@ -114,40 +117,59 @@ const quizQuestions = [
   {q:'Consent should be voluntary and ongoing.', a:true, e:'True. Consent is not created by pressure, threats, manipulation, or force.'},
   {q:'Protecting personal information is part of online safety.', a:true, e:'True. Strong passwords, privacy settings, careful sharing, and account security help protect personal information.'}
 ];
-let quizIndex = 0;
+let quizIndex = 0, score = 0, answered = false;
+const lastQ = quizQuestions.length - 1;
 
 function renderQuiz(){
   const item = quizQuestions[quizIndex];
+  $('#quizResult').hidden = true;
+  $('.answer-grid').hidden = false;
   $('#quizQuestion').textContent = item.q;
   $('#quizProgress').textContent = `Question ${quizIndex + 1} of ${quizQuestions.length}`;
   $('#progressBar').style.width = `${((quizIndex + 1) / quizQuestions.length) * 100}%`;
   $('#quizFeedback').className = 'quiz-feedback';
   $('#quizFeedback').textContent = '';
   $('#nextQuestion').hidden = true;
-  $$('.answer-btn').forEach(btn => btn.classList.remove('selected'));
+  answered = false;
+  $$('.answer-btn').forEach(btn => { btn.classList.remove('selected'); btn.disabled = false; });
 }
 renderQuiz();
 
 $$('.answer-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const choice = btn.dataset.answer === 'true';
-    const correct = choice === quizQuestions[quizIndex].a;
-    $$('.answer-btn').forEach(b => b.classList.remove('selected'));
+    if (answered) return;
+    answered = true;
+    const correct = (btn.dataset.answer === 'true') === quizQuestions[quizIndex].a;
+    if (correct) score++;
+    $$('.answer-btn').forEach(b => { b.classList.remove('selected'); b.disabled = true; });
     btn.classList.add('selected');
     const feedback = $('#quizFeedback');
     feedback.className = `quiz-feedback show ${correct ? 'correct' : 'incorrect'}`;
     feedback.textContent = `${correct ? 'Correct.' : 'Incorrect.'} ${quizQuestions[quizIndex].e}`;
-    $('#nextQuestion').hidden = false;
+    const next = $('#nextQuestion');
+    next.textContent = quizIndex === lastQ ? 'See my score →' : 'Next question →';
+    next.hidden = false;
+    next.focus();
   });
 });
 
 $('#nextQuestion').addEventListener('click', () => {
-  quizIndex = (quizIndex + 1) % quizQuestions.length;
-  renderQuiz();
+  if (quizIndex < lastQ) { quizIndex++; renderQuiz(); return; }
+  const msg = score === quizQuestions.length ? 'Excellent. You are ready to help build safer spaces.' : score >= 4 ? 'Great work. Review the explanations you missed and keep learning.' : 'A good start. Explore the sections above and try again.';
+  $('.answer-grid').hidden = true;
+  $('#quizFeedback').className = 'quiz-feedback';
+  $('#nextQuestion').hidden = true;
+  $('#quizQuestion').textContent = 'Quiz complete';
+  const res = $('#quizResult');
+  res.innerHTML = `<strong>${score} / ${quizQuestions.length}</strong><p>${msg}</p><button class="next-btn" id="quizRestart" type="button">Try again</button> <a class="text-link" href="#pledge">Make a pledge →</a>`;
+  res.hidden = false;
+  $('#quizRestart').addEventListener('click', () => { quizIndex = 0; score = 0; renderQuiz(); });
 });
 
 const themeToggle = $('#themeToggle');
-if (localStorage.getItem('safespace-theme') === 'dark') document.body.classList.add('dark');
+let savedTheme = null;
+try { savedTheme = localStorage.getItem('safespace-theme'); } catch(e) {}
+if (savedTheme === 'dark' || (!savedTheme && matchMedia('(prefers-color-scheme: dark)').matches)) document.body.classList.add('dark');
 themeToggle?.addEventListener('click', () => {
   document.body.classList.toggle('dark');
   localStorage.setItem('safespace-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
@@ -167,7 +189,7 @@ const searchIndex = [
   ['Economic abuse','#forms'],['Online harassment','#forms'],['Stalking','#warning'],['Warning signs','#warning'],['Safety at home','#safety'],
   ['Public safety','#safety'],['School safety','#safety'],['Workplace safety','#safety'],['Online safety','#safety'],['Statistics','#statistics'],
   ['RA 9262','#laws'],['RA 7877','#laws'],['RA 11313 Safe Spaces Act','#laws'],['Myth or Fact Quiz','#quiz'],['Help and Resources','#resources'],
-  ['FAQ','#faq'],['References','#references']
+  ['Take Action pledge','#pledge'],['RA 9710 Magna Carta of Women','#laws'],['RA 8353 Anti-Rape Law','#laws'],['RA 9995 voyeurism','#laws'],['FAQ','#faq'],['References','#references']
 ];
 
 function updateSearch(){
@@ -185,3 +207,73 @@ $('#clearSearch')?.addEventListener('click', () => { searchInput.value=''; updat
 const backTop = $('#backTop');
 window.addEventListener('scroll', () => backTop.classList.toggle('show', window.scrollY > 500));
 backTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+
+// Scroll progress bar
+const prog = $('#scrollProgress');
+const updateProgress = () => { const d = document.documentElement; prog.style.width = `${(d.scrollTop / Math.max(d.scrollHeight - d.clientHeight, 1)) * 100}%`; };
+window.addEventListener('scroll', updateProgress, {passive:true}); updateProgress();
+
+// Accessibility: expanded state for accordions and FAQ
+$$('.accordion-btn, .faq-item button').forEach(b => {
+  b.setAttribute('aria-expanded', 'false');
+  b.addEventListener('click', () => b.setAttribute('aria-expanded', b.closest('.open') ? 'true' : 'false'));
+});
+
+// Animated statistics
+const countObs = new IntersectionObserver(entries => entries.forEach(e => {
+  if (!e.isIntersecting) return;
+  countObs.unobserve(e.target);
+  const el = e.target, t = el.textContent, n = parseFloat(t.replace(/,/g, ''));
+  const dec = (t.split('.')[1] || '').replace(/\D/g, '').length, suf = t.replace(/[\d.,]/g, '');
+  if (isNaN(n) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const start = performance.now();
+  (function step(now){
+    const p = Math.min((now - start) / 1100, 1), v = n * (1 - Math.pow(1 - p, 3));
+    el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec}) + suf;
+    if (p < 1) requestAnimationFrame(step);
+  })(start);
+}), {threshold: .6});
+$$('.data-card strong').forEach(el => countObs.observe(el));
+
+// Pledge card
+const pledgeCard = $('#pledgeCard');
+let pledge = null;
+$('#pledgeMake')?.addEventListener('click', () => {
+  const items = $$('#pledge input[type=checkbox]:checked').map(c => c.value);
+  pledgeCard.innerHTML = '';
+  if (!items.length) { pledgeCard.innerHTML = '<p class="pledge-empty">Select at least one commitment to create your card.</p>'; return; }
+  pledge = {name: $('#pledgeName').value.trim() || 'A SafeSpace supporter', items};
+  const mk = (tag, text, cls) => { const e = document.createElement(tag); e.textContent = text; if (cls) e.className = cls; return e; };
+  const ul = document.createElement('ul');
+  items.forEach(i => ul.appendChild(mk('li', i)));
+  const row = document.createElement('div'); row.className = 'pledge-actions';
+  const dl = mk('button', 'Download image', 'outline-btn'), cp = mk('button', 'Copy text', 'outline-btn');
+  dl.type = cp.type = 'button';
+  dl.addEventListener('click', downloadPledge);
+  cp.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(`${pledge.name}'s pledge (SafeSpace PH)\n` + pledge.items.map(i => '- ' + i).join('\n')); cp.textContent = 'Copied!'; }
+    catch(e) { cp.textContent = 'Copy not supported'; }
+  });
+  row.append(dl, cp);
+  pledgeCard.append(mk('span', 'SAFESPACE PH PLEDGE', 'pledge-kicker'), mk('h3', `${pledge.name}'s pledge`), ul, row);
+});
+
+function downloadPledge(){
+  const c = document.createElement('canvas'); c.width = 1080; c.height = 1350;
+  const x = c.getContext('2d');
+  const g = x.createLinearGradient(0, 0, 1080, 1350); g.addColorStop(0, '#70429a'); g.addColorStop(1, '#2c2047');
+  x.fillStyle = g; x.fillRect(0, 0, 1080, 1350);
+  const wrap = (text, px, y, maxW, lh) => {
+    let line = '';
+    text.split(' ').forEach(w => { const t = line + w + ' '; if (x.measureText(t).width > maxW && line) { x.fillText(line, px, y); line = w + ' '; y += lh; } else line = t; });
+    x.fillText(line, px, y); return y + lh;
+  };
+  x.fillStyle = '#e5cff2'; x.font = '700 34px Arial, sans-serif'; x.fillText('SAFESPACE PH PLEDGE', 90, 130);
+  x.fillStyle = '#fff'; x.font = 'italic 700 70px Georgia, serif';
+  let y = wrap(`${pledge.name}'s pledge`, 90, 260, 900, 82) + 30;
+  x.font = '500 40px Arial, sans-serif';
+  pledge.items.forEach(i => { y = wrap('✓  ' + i, 90, y, 900, 54) + 22; });
+  x.fillStyle = '#e5cff2'; x.font = 'italic 36px Georgia, serif';
+  x.fillText('Know the signs. Protect yourself. Support others.', 90, 1250);
+  c.toBlob(b => { const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'safespace-pledge.png'; a.click(); URL.revokeObjectURL(a.href); });
+}
